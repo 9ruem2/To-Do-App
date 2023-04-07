@@ -51,6 +51,12 @@ public class TodoAppController {
         return new ResponseEntity(findTodoList, HttpStatus.OK);
     }
 
+    @GetMapping("/{todo-id}")
+    public ResponseEntity getTodo(@PathVariable("todo-id") @Positive Long todoId){
+        TodoApp findTodo = todoAppService.getTodo(todoId);
+        return new ResponseEntity(findTodo,HttpStatus.OK);
+    }
+
 
 
 }

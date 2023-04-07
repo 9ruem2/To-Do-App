@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -30,4 +31,12 @@ public class TodoAppService {
         return findTodoList;
     }
 
+    public TodoApp getTodo(Long todoId) {
+        Optional<TodoApp> optionalTodoApp = todoAppRepository.findById(todoId);
+        if(optionalTodoApp.isPresent()){
+            return optionalTodoApp.get();
+        }else {
+            return null;
+        }
+    }
 }
