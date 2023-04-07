@@ -16,6 +16,7 @@ public class TodoAppDto {
     @Setter
     @Getter
     public static class Patch{
+        private Long todoId;
         private String title;
         private Integer order;
         private Boolean completed;

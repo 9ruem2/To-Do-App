@@ -19,7 +19,11 @@ public class TodoAppService {
 
 
     public TodoApp updateTodo(TodoApp todoApp) {
-        return null; //fixme
+        TodoApp findTodo = todoAppRepository.findById(todoApp.getTodoId()).get();
+        Optional.ofNullable(todoApp.getTitle()).ifPresent(findTodo::setTitle);
+        Optional.ofNullable(todoApp.getTodoOrder()).ifPresent(findTodo::setTodoOrder);
+        Optional.ofNullable(todoApp.getCompleted()).ifPresent(findTodo::setCompleted);
+        return todoAppRepository.save(findTodo);
     }
 
     public void deleteTodo(Long todoId){
